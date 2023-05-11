@@ -1,0 +1,14 @@
+footer {
+    background-color: #333333;
+    color: #ffffff;
+    margin: 0px;
+    padding: 1em;
+    border: 0px;
+
+    /* box-sizing: margin-box; */
+  }
+
+  footer > p {
+    text-align: center;
+    font-size: calc(1em + 1vw);
+  }

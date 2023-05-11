@@ -1,0 +1,110 @@
+html, body, article {
+    background : black;
+    color: white;
+    margin: 0px;
+    padding: 0px;
+    border: 0px;
+    height: 100%;
+    width:100%;
+    text-align: justify;
+}
+
+li,a,p,div,ul,main,footer,header,img{
+    margin: 0px;
+    padding: 0px;
+    border: 0px;
+    
+}
+
+a { text-decoration: none;}
+a:visited { color: #ffffff;}
+a:hover {opacity: 50%;cursor: pointer;}
+
+button { text-decoration: none;}
+button:visited { color: #ffffff;}
+button:hover {opacity: 50%;cursor: pointer;}
+
+input { text-decoration: none;}
+input:visited { color: #ffffff;}
+input:hover {opacity: 50%;cursor: pointer;}
+
+main{
+    padding:0em 3em 0em 3em;
+}
+
+.center{
+    justify-content: center;
+    display: grid;
+    text-align: center;
+    height: 100%;
+    width: 100%;
+}
+
+#justify{
+    text-align: justify;
+}
+
+#projPics > img{
+    height: 100%;
+    width: 100%;
+    max-width: 500px;
+    object-fit: cover;
+}
+
+
+
+/* Feedback */
+#feedbackButton{
+    /* width: 30px;
+    height: 100px; */
+    position: fixed;
+    bottom:50%;
+    right:0px;
+
+    background-color: #222;
+    padding: 2px 0px 2px 2px;
+    margin: 2px 0px 2px 2px;
+    border: 2px solid #555;
+
+    text-align: center;
+    writing-mode: vertical-rl;
+}
+
+#feedbackForm{
+    width: 200px;
+    height: 300px;
+    position: fixed;
+    top:50%;
+    left:50%;
+
+    background-color: #000;
+    padding: 2px 0px 2px 2px;
+    margin: -152px 0px 0px -101px;
+    border: 2px solid #555;
+    text-align: center;
+
+    display: none;
+    flex-direction: column;
+}
+
+#feedbackForm > p{
+    flex: 1;
+}
+
+#feedbackForm > #nameIN{
+    flex: 2;
+}
+
+#feedbackForm > #emailIN{
+    flex: 2;
+}
+
+#feedbackForm > #commentIN{
+    flex: 3;
+}
+
+#feedbackForm > a{
+    flex: 2;
+    background-color: red;
+}
+

@@ -1,0 +1,35 @@
+.calculator-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.display {
+    width: 100%;
+    height: 50px;
+    margin-bottom: 20px;
+}
+
+.display input {
+    width: 100%;
+    height: 100%;
+}
+
+table {
+    width: 100%;
+}
+
+.btn {
+    width: 100%;
+    height: 100%;
+}
+
+.btn:hover {
+    /* Add your desired hover animation here */
+}
+
+.op {
+    /* Style your operation buttons if needed */
+}

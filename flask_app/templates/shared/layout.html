@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="eng">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bailey Bakerson's personal page</title>
+  <link rel="stylesheet"    href="{{ url_for('static', filename='main/css/main.css') }}">
+  <link rel="stylesheet"    href="{{ url_for('static', filename='main/css/header.css') }}">
+  <link rel="stylesheet"    href="{{ url_for('static', filename='main/css/footer.css') }}">
+  <link rel="stylesheet"    href="{{ url_for('static', filename='main/css/navbar.css') }}">
+  <link rel="stylesheet"    href="{{ url_for('static', filename='main/css/body.css') }}">
+  <link rel="shortcut icon" href="{{ url_for('static', filename='main/images/favicon.ico') }}">
+  {% block extracss %}{% endblock %}
+  <script src="{{ url_for('static', filename='main/js/main.js') }}" defer></script>
+  {% block extrajs %}{% endblock %}
+</head>
+
+<body>
+    <article>
+    <!-- The header  -->
+    <header>
+      <img src="static/main/images/banner.jpg" alt="banner" loading="lazy">
+    </header>
+
+    <!-- The navigation bar -->
+    <nav>
+      <div>
+        <p>Welcome to Bailey's Page</p>
+      </div>
+
+      <div class="links">
+        <a href="/home">Home</a>
+        <a href="/projects">Projects</a>
+        <a href="https://drive.google.com/file/d/19Gk0RSG5B00V0F5XaXD0mQiMCrWdA8rI/view?usp=share_link">Resume</a>
+        <a href="https://www.linkedin.com/in/bakerson-solutions/"><img id="linkdinPic" src="static/main/images/social-linkedin.png" alt="Linkdin" loading="lazy"></a>
+      </div>
+
+      <div class="menuPic">
+        <a><img id="burgerMenuPic" src="static/main/images/menu-bar.png" alt="menu" loading="lazy"></a>
+      </div>
+
+    </nav>
+
+    <ul id="menuBurger">
+      <a href="/home"><li>Home</li></a>
+      <a href="/projects"><li>Projects</li></a>
+      <a href="https://drive.google.com/file/d/19Gk0RSG5B00V0F5XaXD0mQiMCrWdA8rI/view?usp=share_link"><li>Resume</li></a>
+      <a href="https://www.linkedin.com/in/bakerson-solutions/"><li>Linkdin</li></a>
+    </ul>
+
+    <!-- The main content  -->
+    <main>
+
+
+      {% block maincontent %}{% endblock %}
+
+      
+    </main>
+
+    <!-- The footer of the file -->
+    <footer>
+        <p>© 2022 Bailey Bakerson</p>
+    </footer>
+
+    </article>
+  
+</body>
+
+</html>
+
+
+
+
+
+
+
+

@@ -1,0 +1,29 @@
+{% extends 'shared/layout.html' %}
+
+{% block extracss %}{% endblock %}
+
+{% block maincontent %}
+<div id="container">
+  <div id="leftDiv">
+    <img id="portrait" src="../static/main/images/Portrait.jpg" alt="portrait">
+  </div>
+  <div id="rightDiv">
+    <p>
+      <h1>Bailey Bakerson </h1>
+      Meet Bailey Bakerson, a talented and driven Computer Scientist that graduated from Michigan State University. With a passion for technology and a thirst for knowledge, Bailey is dedicated to honing his skills and exploring new opportunities in the field. As he prepares to embark on the next chapter of his career, Bailey is actively seeking both full-time positions and opportunities for further education and growth. Join us in celebrating Bailey's achievements and supporting him on his journey towards a bright future in the tech industry.
+      <br><br>
+      Bailey has over 10 years of experience working in technical enviornments.
+      <br><br>
+      In the future he looks to be head of his work. 
+    </p>
+  </div>
+</div>
+<!-- Another block of content -->
+<hr>
+
+<div id="funFact">
+  <p id="justify">A fun fact about me: <b>{{fun_fact}}</b> </p>
+</div>
+{% endblock %}
+
+

@@ -1,2 +1,5 @@
-# PersonalSite
-A personal website for side projects.
+# Calculator
+
+
+## How to run
+docker compose up
