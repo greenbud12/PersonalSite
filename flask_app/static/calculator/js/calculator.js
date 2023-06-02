@@ -10,89 +10,119 @@ let factorialButton = document.getElementsByClassName('factorial')[0];
 let openParenButton = document.getElementsByClassName('open-paren')[0];
 let closeParenButton = document.getElementsByClassName('close-paren')[0];
 
+const isNumber = /^[+-]?\d+(\.\d+)?$/;
+const isOperator = /^[-+\/*%^]$/;
 let operations = [];
-let values = [""];
 
 let openCnt = 0;
 let closeCnt = 0;
 
-let lastOperation = null;
-let lastValue = null;
-let isEqualsPressed = false;
-let calError = false;
+let lastValue = 0;
+
 
 display.value = "0"
-
-// optional selection
-// let continueOperationCheckbox = document.getElementById('continue-operation');
-// let continueOperationCheckboxDisplayChange = document.getElementById('continue-op-dis-change');
-
-// continueOperationCheckbox.addEventListener('change', () => {
-//     continueOperationCheckboxDisplayChange.disabled = !continueOperationCheckbox.checked;
-// });
 
 
 //Calculator
 // ###### START BUTTON MAP ########
 numButtons.map(button => {
     button.addEventListener('click', (e) => {
-        // if (operations.length === 0 && isEqualsPressed) {
-        //     values = [""];
-            
-        //     if (!continueOperationCheckboxDisplayChange.checked){
-        //         isEqualsPressed = false;
-        //         operations = [];
-        //         lastOperation = null;
-        //         lastValue = null;
-        //     }
-        // }
 
         // Add number
-        values[values.length - 1] += e.target.value;
+        // Handle impossible numbers
+        let i = operations.length - 1;
+        // nothing case
+        if (operations.length === 0){
+            operations.push(e.target.value);
+        // case of number
+        }else if (operations[i].length > 1 && /[0-9]/.test(operations[i])){ //
+            operations[i] = operations[i] + e.target.value;
+        // case of one char
+        }else if (operations[i].length === 1) {
+            // 0 case
+            if (operations[i] === '0'){
+                operations[i] = e.target.value;
+            // last is op or parenth
+            }else if (!isNumber.test(operations[i])){
+                // right paren case -> mult is default
+                if (operations[i] === ')'){
+                    operations.push('*');
+                };
+                operations.push(e.target.value);
+            }
+            //add to number
+            else operations[i] = operations[i] + e.target.value;
+        }
+
         update();
     })
 });
 
 opButtons.map(button => {
     button.addEventListener('click', (e) => {
-        if (values[values.length - 1] !== "") {
+
+        // add in 0 if nothing
+        if (operations.length === 0){
+            operations.push('0')
+        };
+
+        
+
+        let i = operations.length - 1;
+
+        // update lastValue
+        if (operations.length !== 0){lastValue = operations[i];};
+        
+        // add 0 if NUM DEC OP -> NUM DEC 0 OP
+        let j = operations[i]
+        if (j[j.length - 1] === '.'){operations[i] = j + '0';};
+
+        // add op
+        if (operations[i] !== "" && isNumber.test(operations[i]) || operations[i] === ')') {
             operations.push(e.target.value);
-
-            // add 0 if NUM DEC OP -> NUM DEC NUM OP
-            let j = values[values.length - 1]
-            if (j[j.length - 1] === '.'){
-                values[values.length - 1] = j + '0'
-            }
-
-
-            values.push("");
-            isEqualsPressed = false;
-            update();
         }
+        update();
     })
 });
 
 decimalButton.addEventListener('click', () => {
-    let i = values.length - 1;
-    if (!values[i].includes('.')) {
-        console.log(values[i].length);
-        if (values[i].length === 0){
-            values[i] += '0.';
+    if (operations.length === 0){
+        operations.push('0');
+    }
+
+    let i = operations.length - 1;
+    if (!operations[i].includes('.')) {
+        if (!isNumber.test(operations[i])){
+            if (!isOperator.test(operations[i])){
+                operations.push('*');
+            };
+            operations.push('0.');
         }else{
-            values[i] += '.';
+            operations[i] += '.';
         };
     };
     update();
 });
 
 negateButton.addEventListener('click', () => {
-    // if (values[values.length - 1] !== "") {
-    //     values[values.length - 1] = parseFloat(values[values.length - 1]) * -1; // Negate the value
-    // }
-    // updateDisplay();
+    let i = operations.length - 1;
+    if (operations.length !== 0 && operations[i] !== '0' && isNumber.test(operations[i])){
+        if (operations[i][0] === '-'){
+            operations[i] = operations[i].slice(1);
+        }else operations[i] = '-' + operations[i];
+    };
+
+    //TODO fix negateing (
+    
+    update();
 });
 
 equalsButton.addEventListener('click', () => {
+    // fix case where last number is just 4. instead of 4.0, prob not needed
+    let i = operations.length-1;
+    if (operations.length !== 0 && operations[i][operations[i].length-1] === '.'){
+        operations[i] = operations[i]+"0";
+    };
     evaluateExpression();
 });
 
@@ -112,55 +142,69 @@ factorialButton.addEventListener('click', () => {
 });
 
 openParenButton.addEventListener('click', () => {
-    // if (values[values.length - 1] !== "") {
-    //     operations.push("*");
-    //     values.push("");
-    // }
-    openCnt += 1;
+    if (operations.length !== 0 && isNumber.test(operations[operations.length-1])){
+        operations.push("*");
+    };
     operations.push("(");
+    openCnt += 1;
     update();
 });
   
 closeParenButton.addEventListener('click', () => {
-    // if (values[values.length - 1] === "") {
-    //     operations.pop(); // Remove the preceding operator if no value entered after it
-    // }
-    // operations.push(values.pop());
     if (closeCnt < openCnt){
+
+        // unclosed decimal case
+        if (operations.length !== 0){
+            let i = operations.length-1
+            if (operations[i][operations[i].length-1]==='.'){
+                // this is the behaivor of the microsoft calculator
+                // operations[i] = operations[i].slice(0, -1);
+                operations[i] = operations[i] + '0';
+            };
+
+            // case where closeing on an operator 
+            if (isOperator.test(operations[i])){
+                operations.push(lastValue);
+            };
+        }
+        
+
         closeCnt += 1;
         operations.push(")");
         update();
-    };
+    }
+    
 });
 // ######## END BUTTON MAP ########
 
 function update() {
     display.value = "";
-    let j = 0;
-    for (let i = 0; i + j < values.length; i++) {
-        if (values[i] === '(' || values[i] === ')'){
-            j += 1;
-        }
-        display.value += values[i+j] + (operations[i+j] || "");
+
+    for (let i = 0; i < operations.length; i++) {
+        display.value += operations[i]
     }
 
     // 0 if nothing
     if (display.value === ""){
-        display.value = "0";
-    };
-};
-
-function evaluateExpression() {
-    // add last value to values if NUM OP EQL -> NUM OP NUM EQL
-    let i = values.length-1;
-    if (values[i].length === 0 && values.length > 1) {
-        values[i] = values[i-1];
-    };
+        display.value = "0"
+    }
 
 
     console.log(operations)
-    console.log(values)
-    update();
+}
+
+function evaluateExpression() {
+    // needs to happen after evaluation of parenths
+
+    // eval parenths 
+
+    // add last value to values if NUM OP EQL -> NUM OP NUM EQL
+    // Micro evals the first portion and then adds it to the end
+    // let i = operations.length-1;
+    // if (operations.length !== 0 && !isNumber.test(operations[i])) {
+    //     operations.push(operations[i-1]);
+    // };
+
     evaluate();
 }
   
@@ -172,7 +216,7 @@ function evaluate() {
     lastValue = 0;
     lastOperation = operations[operations.length - 1];
 
-    clear();
+    
     update();
 
     
@@ -187,7 +231,9 @@ function factorial(n) {
 }
 
 function clear(){
+    parenths = [];
     operations = [];
+    expected = "";
     values = [""];
     lastOperation = null;
     lastValue = null;
