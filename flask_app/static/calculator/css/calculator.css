@@ -1,35 +1,89 @@
+main {
+    padding: 0;
+}
+
+body {
+    background-color: #151515;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
 .calculator-container {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 100vh;
+    max-height: 90vh;
+    width: 90vw;
+    max-width: 400px;
+    background-color: #222;
+    border-radius: 25px;
+    box-shadow: 0px 0px 15px #000;
+    padding: 2vw;
+    box-sizing: border-box;
+    margin:2vw;
 }
 
 .display {
     width: 100%;
-    height: 50px;
+    height: 70px;
     margin-bottom: 20px;
+    background-color: #151515;
+    border-radius: 15px;
+    box-shadow: 0px 0px 10px #000 inset;
 }
 
 .display input {
-    width: 100%;
+    width: 95%;
     height: 100%;
+    background-color: #151515;
+    color: #00ff00;
+    border: none;
+    padding: 10px;
+    font-size: 1.5em;
+    background: rgba(0,0,0,0);
 }
 
 table {
     width: 100%;
 }
 
-.btn {
+td {
+    width: 20%;
+    height: 60px;
+}
+
+.btn, .op, .mem, .num, .equals, .clear, .negate, .deci, .open-paren, .close-paren, .factorial {
     width: 100%;
     height: 100%;
+    border: none;
+    background-color: #333;
+    color: #00ff00;
+    font-size: 1.5em;
+    border-radius: 15px;
+    transition: background-color 0.2s;
 }
 
-.btn:hover {
-    /* Add your desired hover animation here */
+.btn:hover, .op:hover, .mem:hover, .num:hover, .equals:hover, .clear:hover, .negate:hover, .deci:hover, .open-paren:hover, .close-paren:hover, .factorial:hover {
+    background-color: #555;
+    cursor: pointer;
 }
 
-.op {
-    /* Style your operation buttons if needed */
+.btn:active, .op:active, .mem:active, .num:active, .equals:active, .clear:active, .negate:active, .deci:active, .open-paren:active, .close-paren:active, .factorial:active {
+    background-color: #777;
+}
+
+@media only screen and (max-width: 600px) {
+    .display input {
+        font-size: 1.2em;
+    }
+
+    .btn, .op, .mem, .num, .equals, .clear, .negate, .deci, .open-paren, .close-paren, .factorial {
+        font-size: 1.2em;
+    }
 }
