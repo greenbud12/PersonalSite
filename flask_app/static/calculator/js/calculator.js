@@ -194,9 +194,9 @@ opButtons.map(button => {
 memoryButtons.map(button => {
     button.addEventListener('click', (e) => {
         if (e.target.value === "MS"){
-            memory = operations;
+            memory = Object.assign( [] ,operations);
         }else if (e.target.value === "ML"){
-            operations = memory;
+            operations = Object.assign( [] ,memory);
             update();
         }
     })
@@ -320,7 +320,7 @@ function evaluateExpression(expression) {
     //todo do custom eval?
 
     try {
-        return eval(expression.join(''));
+        return eval(expression.join('')).toString();
     } catch (error) {
         console.error('Error evaluating expression:', error);
         return null;
