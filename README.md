@@ -18,7 +18,11 @@ Please see [Features](#features) for a list of projects.
 
 ## Description
 
-This project is a basic calculator web application implemented in JavaScript. It allows users to perform arithmetic calculations, including addition, subtraction, multiplication, division, exponentiation, percentage calculation, and factorial.
+A simple website the holds information about myself and some fun side projects.
+
+### Calculator
+
+This project is a basic calculator web application implemented in JavaScript. It allows users to perform arithmetic calculations, including addition, subtraction, multiplication, division, powers, modulo, and factorial.
 
 ## Features
 
@@ -26,7 +30,7 @@ Projects that I have tinked with.
 
 ### Calculator
 
-- Addition, subtraction, multiplication, division, exponentiation, percentage calculation, and factorial.
+- Addition, subtraction, multiplication, division, powers, modulo, and factorial.
 - Keyboard support for convenient input.
 - Memory functions to store and recall values.
 - Clearing of calculations.
