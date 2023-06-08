@@ -1,6 +1,8 @@
-# Calculator Project
+# Web Project
 
-A simple calculator implemented in JavaScript.
+A simple website the holds information about myself and some fun side projects.
+
+Please see [Features](#features) for a list of projects.
 
 ## Table of Contents
 
@@ -8,7 +10,6 @@ A simple calculator implemented in JavaScript.
 - [Features](#features)
 - [Requirements](#requirements)
 - [Installation](#installation)
-- [Usage](#usage)
 - [Running via Python](#running-via-python)
 - [Running via Docker](#running-via-docker)
 - [See Online Version]()
@@ -45,19 +46,11 @@ Projects that I have tinked with.
 2. Navigate to the project directory:
     
     ```bash
-    cd calculator
-
-## Usage
-
-1. Open the index.html file in a web browser.
-
-2. Use the provided buttons or keyboard keys to perform calculations.
-
-3. The result will be displayed in the calculator display area.
+    cd PersonalSite
 
 ## Running via Python
 
-If you prefer to run the calculator using Python's built-in web server, follow these steps:
+If you prefer to run the site using Python's built-in web server, follow these steps:
 
 1. Ensure you have Python 3 installed on your system.
 
@@ -66,7 +59,7 @@ If you prefer to run the calculator using Python's built-in web server, follow t
 3. Start the Python web server:
 
     ```bash
-    python -m http.server
+    python -m app.py
 
 Open a web browser and visit http://localhost:8080/calculator or http://127.0.0.1:8080/calculator to access the calculator.
 
