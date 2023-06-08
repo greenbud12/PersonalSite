@@ -281,7 +281,7 @@ factorialButton.addEventListener('click', () => {
 });
 
 openParenButton.addEventListener('click', () => {
-    if (operations.length !== 0 && isNumber.test(operations[operations.length-1])){
+    if (operations.length !== 0 && isNumber.test(operations[operations.length-1]) || operations[operations.length-1] === ")"){
         operations.push("*");
     };
     operations.push("(");
