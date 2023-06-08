@@ -32,6 +32,8 @@ Projects that I have tinked with.
 - Clearing of calculations.
 - Parentheses support for complex expressions.
 
+### More in the making
+
 ## Requirements
 
 - Web browser with JavaScript support
