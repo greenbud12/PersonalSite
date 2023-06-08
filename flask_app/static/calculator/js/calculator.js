@@ -195,6 +195,7 @@ memoryButtons.map(button => {
     button.addEventListener('click', (e) => {
         if (e.target.value === "MS"){
             memory = Object.assign( [] ,operations);
+            display.value = "SAVED";
         }else if (e.target.value === "ML"){
             operations = Object.assign( [] ,memory);
             update();
