@@ -21,6 +21,10 @@ This project is a basic calculator web application implemented in JavaScript. It
 
 ## Features
 
+Projects that I have tinked with.
+
+### Calculator
+
 - Addition, subtraction, multiplication, division, exponentiation, percentage calculation, and factorial.
 - Keyboard support for convenient input.
 - Memory functions to store and recall values.
@@ -36,7 +40,7 @@ This project is a basic calculator web application implemented in JavaScript. It
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/your-username/calculator.git
+   git clone https://github.com/your-username/PersonalSite.git
 
 2. Navigate to the project directory:
     
